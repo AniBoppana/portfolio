@@ -110,3 +110,52 @@ h2, h3, h4, h5, h6 {
   margin-top: 1em;
   margin-bottom: 0.5em;
 }
+
+section {
+  background: oklch(98% 0.01 200 / 0.7);
+  border-radius: 0.7em;
+  box-shadow: 0 2px 8px oklch(80% 3% 200 / 0.15);
+  padding: 2em 1.5em;
+  margin-bottom: 2em;
+}
+
+section header h2 {
+  color: var(--color-accent);
+  letter-spacing: 0.03em;
+  font-size: 1.6em;
+  margin-bottom: 0.5em;
+}
+
+ul, ol {
+  padding-left: 1.5em;
+}
+
+section ul li {
+  margin-bottom: 0.5em;
+}
+
+article {
+  margin-bottom: 1.5em;
+}
+
+strong {
+  color: oklch(40% 0.2 200);
+}
+
+time {
+  font-family: monospace;
+  color: oklch(60% 0.1 200);
+  font-size: 0.95em;
+}
+
+@media (max-width: 600px) {
+  section {
+    padding: 1em 0.5em;
+  }
+  h1 {
+    font-size: 250%;
+  }
+  section header h2 {
+    font-size: 1.2em;
+  }
+}
