@@ -1,4 +1,8 @@
 html {
+  color-scheme: light dark;
+}
+
+html {
   --color-accent: oklch(65% 50% 0);
   accent-color: var(--color-accent);
 }
@@ -13,7 +17,8 @@ body {
 nav {
   display: flex;
   margin-bottom: 1.5em;
-  border-bottom: 1px solid oklch(80% 3% 200);
+  --border-color: oklch(50% 10% 200 / 40%);
+  border-bottom: 1px solid var(--border-color);
 }
 
 nav ul {
@@ -26,7 +31,7 @@ nav ul {
 nav ul li {
     flex: 1;
 }
-nav ul li a {
+nav a {
     display: block;
     text-align: center;
     padding: 0.5em;
@@ -35,15 +40,14 @@ nav ul li a {
     flex: 1;
     transition: background 0.2s, border-bottom 0.2s;
 }
-nav ul li a.current {
+nav a.current {
     font-weight: bold;
     border-bottom: 0.4em solid oklch(90% 3% 200);
     background: oklch(97% 3% 200);
     padding-bottom: 0.1em;
 }
-nav ul li a:hover:not(.current) {
-  border-bottom: 0.4em solid var(--color-accent);
-  background-color: oklch(from var(--color-accent) 95% 5% h);
+nav a:hover:not(.current) {
+  background-color: color-mix(in oklch, var(--color-accent), canvas 85%);
 }
 
 form {
@@ -145,6 +149,20 @@ time {
   font-size: 0.95em;
 }
 
+.color-scheme {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-size: 80%;
+  font-family: inherit;
+  background: rgba(255,255,255,0.7);
+  padding: 0.3em 0.7em;
+  border-radius: 0.5em;
+  z-index: 1000;
+}
+.color-scheme select {
+  font: inherit;
+}
 @media (max-width: 600px) {
   section {
     padding: 1em 0.5em;
@@ -154,5 +172,11 @@ time {
   }
   section header h2 {
     font-size: 1.2em;
+  }
+  .color-scheme {
+    top: 0.5rem;
+    right: 0.5rem;
+    font-size: 100%;
+    padding: 0.2em 0.5em;
   }
 }
