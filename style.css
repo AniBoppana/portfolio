@@ -42,12 +42,15 @@ nav a {
 }
 nav a.current {
     font-weight: bold;
-    border-bottom: 0.4em solid oklch(90% 3% 200);
-    background: oklch(97% 3% 200);
+    border-bottom: 0.4em solid var(--border-color);
+    background: color-mix(in oklch, var(--color-accent), canvas 85%);
+    color: canvastext;
     padding-bottom: 0.1em;
 }
 nav a:hover:not(.current) {
+  border-bottom: 0.4em solid var(--border-color);
   background-color: color-mix(in oklch, var(--color-accent), canvas 85%);
+  color: canvastext;
 }
 
 form {
