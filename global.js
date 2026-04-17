@@ -70,3 +70,15 @@ select.addEventListener('input', function (event) {
 if ("colorScheme" in localStorage) {
   setColorScheme(localStorage.colorScheme);
 }
+
+const form = document.querySelector('form[action^="mailto:"]');
+form?.addEventListener('submit', function (event) {
+  event.preventDefault();
+  const data = new FormData(form);
+  const params = [];
+  for (let [name, value] of data) {
+    params.push(`${encodeURIComponent(name)}=${encodeURIComponent(value)}`);
+  }
+  const url = form.action + "?" + params.join("&");
+  location.href = url;
+});
