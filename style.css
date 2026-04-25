@@ -183,3 +183,18 @@ time {
     padding: 0.2em 0.5em;
   }
 }
+
+#profile-stats dl {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.5em 1em;
+  margin: 0;
+}
+#profile-stats dt {
+  font-weight: bold;
+  grid-row: 1;
+}
+#profile-stats dd {
+  margin: 0;
+  grid-row: 2;
+}
