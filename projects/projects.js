@@ -47,16 +47,11 @@ function renderPieAndLegend(projectsGiven, selectedIdx = -1) {
   const svg = d3.select('#projects-pie-plot');
   svg.selectAll('*').remove();
 
-  const width = +svg.attr('width') || 200;
-  const height = +svg.attr('height') || 200;
-  const radius = Math.min(width, height) / 2;
-
-  const g = svg.append('g').attr('transform', `translate(${width / 2}, ${height / 2})`);
-  const arcGenerator = d3.arc().innerRadius(0).outerRadius(radius - 10);
+  const arcGenerator = d3.arc().innerRadius(0).outerRadius(50);
   const pie = d3.pie().value(d => d.value);
   const arcData = pie(data);
 
-  g.selectAll('path')
+  svg.selectAll('path')
     .data(arcData)
     .enter()
     .append('path')
@@ -75,7 +70,7 @@ function renderPieAndLegend(projectsGiven, selectedIdx = -1) {
   data.forEach((d, idx) => {
     legend.append('li')
       .attr('style', `--color:${colors(idx)}`)
-      .attr('class', 'legend-item' + (idx === selectedIdx ? ' selected' : ''))
+      .attr('class', 'legend-item' + (idx === selectedIndex ? ' selected' : ''))
       .style('cursor', 'pointer')
       .html(`<span class="swatch"></span> ${d.label} <em>(${d.value})</em>`)
       .on('click', function() {
