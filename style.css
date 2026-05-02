@@ -198,3 +198,20 @@ time {
   margin: 0;
   grid-row: 2;
 }
+.project-meta {
+  margin-top: 0.3em;
+  color: #888;
+  font-family: Baskerville, serif;
+  font-size: 1em;
+  font-variant-numeric: oldstyle-nums;
+}
+.project-year {
+  color: #888;
+}
+
+#projects-pie-plot {
+  max-width: 20em;
+  margin-block: 2em;
+  display: block;
+  overflow: visible;
+}
