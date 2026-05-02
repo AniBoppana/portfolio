@@ -225,6 +225,17 @@ time {
   flex-shrink: 0;
 }
 
+#projects-pie-plot path {
+  cursor: pointer;
+  transition: opacity 300ms, fill 300ms;
+}
+#projects-pie-plot:has(path:hover) path:not(:hover) {
+  opacity: 0.5;
+}
+#projects-pie-plot path.selected {
+  fill: oklch(60% 45% 0) !important;
+}
+
 .legend {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(9em, 1fr));
@@ -262,6 +273,11 @@ time {
   font-style: normal;
   margin-left: 0.3em;
   font-size: 0.95em;
+}
+
+.legend-item.selected {
+  --color: oklch(60% 45% 0) !important;
+  font-weight: bold;
 }
 
 /* Ensure year font is consistent everywhere */
