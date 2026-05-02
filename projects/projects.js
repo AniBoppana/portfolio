@@ -1,4 +1,3 @@
-import * as d3 from 'https://cdn.jsdelivr.net/npm/d3@7.9.0/+esm';
 import { fetchJSON, renderProjects } from '../global.js';
 
 const projects = await fetchJSON('../lib/projects.json');
@@ -18,12 +17,14 @@ for (const project of projects) {
     yearCounts[project.year] = (yearCounts[project.year] || 0) + 1;
   }
 }
-const years = Object.keys(yearCounts);
-const data = Object.values(yearCounts);
+const data = Object.entries(yearCounts).map(([year, value]) => ({
+  label: year,
+  value: value
+}));
 
 const svg = d3.select('#projects-pie-plot');
 const arcGenerator = d3.arc().innerRadius(0).outerRadius(50);
-const pie = d3.pie();
+const pie = d3.pie().value(d => d.value);
 const arcData = pie(data);
 const colors = d3.scaleOrdinal(d3.schemeTableau10);
 
@@ -42,4 +43,12 @@ svg.selectAll('text')
   .attr('text-anchor', 'middle')
   .attr('alignment-baseline', 'middle')
   .attr('font-size', '8px')
-  .text((d, i) => years[i]);
+  .text(d => d.data.label);
+
+let legend = d3.select('.legend');
+data.forEach((d, idx) => {
+  legend.append('li')
+    .attr('style', `--color:${colors(idx)}`)
+    .attr('class', 'legend-item')
+    .html(`<span class="swatch"></span> ${d.label} <em>(${d.value})</em>`);
+});

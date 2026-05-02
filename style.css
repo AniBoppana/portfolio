@@ -201,7 +201,7 @@ time {
 .project-meta {
   margin-top: 0.3em;
   color: #888;
-  font-family: Baskerville, serif;
+  font-family: inherit;
   font-size: 1em;
   font-variant-numeric: oldstyle-nums;
 }
@@ -209,9 +209,65 @@ time {
   color: #888;
 }
 
+.projects-pie-container {
+  display: flex;
+  align-items: flex-start;
+  gap: 2em;
+  margin-bottom: 2em;
+  flex-wrap: wrap;
+}
+
 #projects-pie-plot {
   max-width: 20em;
   margin-block: 2em;
   display: block;
   overflow: visible;
+  flex-shrink: 0;
+}
+
+.legend {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(9em, 1fr));
+  gap: 1em;
+  padding: 1em;
+  margin: 0;
+  border: 1px solid #ccc;
+  border-radius: 0.5em;
+  background: oklch(98% 0.01 200 / 0.7);
+  flex: 1;
+  min-width: 10em;
+  list-style: none;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 0.7em;
+  font-size: 1em;
+}
+
+.legend-item .swatch {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  aspect-ratio: 1 / 1;
+  border-radius: 0.2em;
+  background: var(--color);
+  border: 1px solid #bbb;
+  margin-right: 0.5em;
+}
+
+.legend-item em {
+  color: #888;
+  font-style: normal;
+  margin-left: 0.3em;
+  font-size: 0.95em;
+}
+
+/* Ensure year font is consistent everywhere */
+.project-meta, .project-year, .legend-item em {
+  font-family: inherit;
+  font-variant-numeric: oldstyle-nums;
+  color: #888;
+  font-size: 1em;
 }
