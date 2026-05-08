@@ -111,12 +111,22 @@ function renderScatterPlot(data, commits) {
     .attr('r', 5)
     .attr('fill', d => d3.interpolateCool(d.hourFrac / 24));
 
-  // X Axis
   svg.append('g')
     .attr('transform', `translate(0, ${usableArea.bottom})`)
-    .call(d3.axisBottom(xScale));
+    .call(
+      d3.axisBottom(xScale)
+        .ticks(d3.timeDay.every(1))
+        .tickFormat(d => {
+          if (d.getDate() === 1) {
+            return d3.timeFormat('%b')(d);
+          }
+          return d3.timeFormat('%d %a')(d);
+        })
+    )
+    .selectAll('text')
+    .attr('text-anchor', 'end')
+    .attr('transform', 'rotate(-30)');
 
-  // Y Axis
   svg.append('g')
     .attr('transform', `translate(${usableArea.left}, 0)`)
     .call(
