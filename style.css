@@ -320,3 +320,12 @@ time {
   line-height: 1.1;
   font-family: inherit;
 }
+
+.gridlines .tick line {
+  stroke: #bbb;
+  stroke-opacity: 0.3;
+  shape-rendering: crispEdges;
+}
+.gridlines path {
+  display: none;
+}
