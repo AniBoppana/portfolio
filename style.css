@@ -329,3 +329,50 @@ time {
 .gridlines path {
   display: none;
 }
+
+dl.info {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: 0.2em 1em;
+  background: rgba(255,255,255,0.95);
+  border-radius: 0.7em;
+  box-shadow: 0 2px 16px 0 #0002;
+  padding: 1em 1.5em;
+  font-size: 1em;
+  color: #222;
+  min-width: 220px;
+  max-width: 320px;
+  z-index: 1000;
+  transition-duration: 500ms;
+  transition-property: opacity, visibility;
+  position: fixed;
+  top: 1em;
+  left: 1em;
+  pointer-events: none;
+}
+dl.info[hidden]:not(:hover, :focus-within) {
+  opacity: 0;
+  visibility: hidden;
+}
+dl.info dt {
+  color: #888;
+  font-weight: 500;
+  font-size: 0.95em;
+  margin: 0;
+}
+dl.info dd {
+  margin: 0 0 0.2em 0;
+  font-weight: 400;
+  font-size: 1.05em;
+}
+
+circle {
+  transition: 200ms;
+  transform-origin: center;
+  transform-box: fill-box;
+}
+circle:hover {
+  transform: scale(1.5);
+  stroke: #222;
+  stroke-width: 2px;
+}
