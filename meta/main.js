@@ -40,21 +40,24 @@ function processCommits(data) {
 }
 
 function renderCommitInfo(data, commits) {
-  const dl = d3.select('#stats').append('dl').attr('class', 'stats');
-  dl.append('dt').html('Total <abbr title="Lines of code">LOC</abbr>');
-  dl.append('dd').text(data.length);
-  dl.append('dt').text('Total commits');
-  dl.append('dd').text(commits.length);
+  const container = d3.select('#stats');
+  container.html(''); // Clear previous content
 
-  // Example extra stats:
-  dl.append('dt').text('Number of files');
-  dl.append('dd').text(d3.groups(data, d => d.file).length);
+  const stats = [
+    { label: 'Commits', value: commits.length },
+    { label: 'Files', value: d3.groups(data, d => d.file).length },
+    { label: 'Total LOC', value: data.length },
+    { label: 'Max Depth', value: d3.max(data, d => d.depth) },
+    { label: 'Longest Line', value: d3.max(data, d => d.length) },
+    { label: 'Max Lines', value: d3.max(data, d => d.line) }
+  ];
 
-  dl.append('dt').text('Max file length');
-  dl.append('dd').text(d3.max(data, d => d.line));
-
-  dl.append('dt').text('Average line length');
-  dl.append('dd').text(d3.mean(data, d => d.length).toFixed(1));
+  const summary = container.append('div').attr('class', 'stats-summary');
+  stats.forEach(stat => {
+    const statDiv = summary.append('div').attr('class', 'stat');
+    statDiv.append('div').attr('class', 'stat-label').text(stat.label.toUpperCase());
+    statDiv.append('div').attr('class', 'stat-value').text(stat.value);
+  });
 }
 
 let data = await loadData();
