@@ -394,3 +394,23 @@ circle.selected {
   stroke: #222;
   stroke-width: 2px;
 }
+
+#selection-count {
+  font-size: 2em;
+  font-weight: 500;
+  margin: 1em 0 0.5em 0;
+}
+
+#language-breakdown {
+  font-size: 1.3em;
+}
+
+#language-breakdown dt {
+  font-weight: bold;
+  margin-top: 0.5em;
+}
+
+#language-breakdown dd {
+  margin-left: 0;
+  margin-bottom: 0.5em;
+}
