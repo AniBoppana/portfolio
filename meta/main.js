@@ -101,7 +101,6 @@ function renderScatterPlot(data, commits) {
         .tickSize(-usableArea.width)
     );
 
-  // Dots
   svg.append('g')
     .attr('class', 'dots')
     .selectAll('circle')
@@ -112,22 +111,12 @@ function renderScatterPlot(data, commits) {
     .attr('r', 5)
     .attr('fill', d => d3.interpolateCool(d.hourFrac / 24));
 
-  const xAxis = d3.axisBottom(xScale)
-    .ticks(d3.timeDay.every(1))
-    .tickFormat(d => {
-      if (d.getDate() === 1) {
-        return d3.timeFormat('%b')(d);
-      }
-      return d3.timeFormat('%d %a')(d);
-    });
-
+  // X Axis
   svg.append('g')
-    .attr('class', 'x-axis')
     .attr('transform', `translate(0, ${usableArea.bottom})`)
-    .call(xAxis)
-    .selectAll('text')
-    .attr('text-anchor', 'end')
+    .call(d3.axisBottom(xScale));
 
+  // Y Axis
   svg.append('g')
     .attr('transform', `translate(${usableArea.left}, 0)`)
     .call(
