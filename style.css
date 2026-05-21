@@ -419,3 +419,27 @@ circle.selected {
   margin-left: 0;
   margin-bottom: 0.5em;
 }
+
+.slider-row {
+  display: flex;
+  align-items: center;
+  gap: 1em;
+  margin-bottom: 0.2em;
+}
+
+#commit-progress {
+  flex: 1;
+  accent-color: #1976d2; /* blue */
+  height: 2.2em;
+}
+
+.slider-time {
+  text-align: right;
+  margin-bottom: 1.5em;
+}
+
+#commit-time {
+  font-size: 1.2em;
+  color: #1976d2;
+  font-family: monospace;
+}

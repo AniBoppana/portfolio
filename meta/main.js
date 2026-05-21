@@ -157,6 +157,30 @@ function renderScatterPlot(data, commits) {
     .attr('class', 'y-axis')
     .call(yAxis);
 
+  const dots = svg.select('g.dots');
+  const sortedCommits = d3.sort(commits, d => -d.totalLines);
+  dots.selectAll('circle')
+    .data(sortedCommits, d => d.id)
+    .join('circle')
+    .attr('cx', d => xScale(d.datetime))
+    .attr('cy', d => yScale(d.hourFrac))
+    .attr('r', d => rScale(d.totalLines))
+    .attr('fill', d => d3.interpolateCool(d.hourFrac / 24))
+    .style('fill-opacity', 0.7)
+    .on('mouseenter', (event, commit) => {
+      d3.select(event.currentTarget).style('fill-opacity', 1);
+      renderTooltipContent(commit);
+      updateTooltipVisibility(true);
+      updateTooltipPosition(event);
+    })
+    .on('mousemove', (event) => {
+      updateTooltipPosition(event);
+    })
+    .on('mouseleave', (event) => {
+      d3.select(event.currentTarget).style('fill-opacity', 0.7);
+      updateTooltipVisibility(false);
+    });
+
   function brushed(event) {
     const selection = event.selection;
     d3.selectAll('circle').classed('selected', (d) =>
