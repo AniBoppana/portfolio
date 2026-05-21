@@ -390,7 +390,7 @@ circle:hover {
   }
 }
 circle.selected {
-  fill: #ff6b6b !important;
+  fill: #5390F7 !important;
   stroke: #222;
   stroke-width: 2px;
 }
