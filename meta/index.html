@@ -10,6 +10,13 @@
 <body>
   <h1>Meta</h1>
   <p>This page includes stats about the code of this website.</p>
+  <div style="display: flex; flex: 1; align-items: baseline;">
+    <label>
+      Show commits until:
+      <input type="range" id="commit-progress" min="0" max="100" value="100">
+      <time id="commit-time" style="margin-left: auto;"></time>
+    </label>
+  </div>
   <div id="stats"></div>
   <h2>Commits by time of day</h2>
   <div id="chart"></div>
@@ -22,7 +29,7 @@
     <dt>Date</dt>
     <dd id="commit-date"></dd>
     <dt>Time</dt>
-    <dd id="commit-time"></dd>
+    <dd id="commit-tooltip-time"></dd>
     <dt>Author</dt>
     <dd id="commit-author"></dd>
     <dt>Lines Edited</dt>
