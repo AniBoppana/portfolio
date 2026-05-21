@@ -367,14 +367,9 @@ dl.info dd {
 }
 
 circle {
-  transition: all 200ms, r calc(var(--r, 1) * 100ms);
+  transition: 200ms;
   transform-origin: center;
   transform-box: fill-box;
-}
-@starting-style {
-  circle {
-    r: 0;
-  }
 }
 circle:hover {
   transform: scale(1.5);
@@ -418,28 +413,4 @@ circle.selected {
 #language-breakdown dd {
   margin-left: 0;
   margin-bottom: 0.5em;
-}
-
-.slider-row {
-  display: flex;
-  align-items: center;
-  gap: 1em;
-  margin-bottom: 0.2em;
-}
-
-#commit-progress {
-  flex: 1;
-  accent-color: #1976d2; /* blue */
-  height: 2.2em;
-}
-
-.slider-time {
-  text-align: right;
-  margin-bottom: 1.5em;
-}
-
-#commit-time {
-  font-size: 1.2em;
-  color: #1976d2;
-  font-family: monospace;
 }
